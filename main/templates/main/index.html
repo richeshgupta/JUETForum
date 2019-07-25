@@ -1,0 +1,46 @@
+{% extends 'main/nav.html' %}
+{% load static %}
+{% block title %}
+	<title>Forum - Home</title>
+	<link rel="shortcut icon" type="image/png" href="{% static 'favicon.png' %}">
+{% endblock title %}
+{% block side-nav %}
+	<div class='col-md-3 mr-5 float-right'>
+		<div class='card'>
+			<div class='card-body'>
+				<h3>Trending Posts</h3>
+			</div>
+			<div class='card-footer'>
+				<h4 class='text-muted'>Coming Soon</h4>
+			</div>
+		</div>
+	</div>
+{% endblock side-nav %}
+{% block content %}
+	<br /><br />
+<div class='col-md-7 ml-5'>
+	<div class='container pt-3 mx-auto border'>
+				<table class='table table-dark'>
+					<thead>
+						<tr>
+							<th scope="col">Questions</th>
+							<th scope="col">Date</th>
+							<th scope="col">Asked by</th>
+							<th scope='col'>Tags</th>
+						</tr>
+					</thead>
+					{% for data in datas %}
+						<tbody>
+							<tr>
+								<th scope="row"><a class='text text-success' href='{% url "forum_detail" data.id %}'>{{ data.title_q }}</th></a>
+								<td>{{ data.date_q }}</td>
+								<td><a href='{% url "profile" data.author_q.id %}' class='btn btn-outline-light'>{{ data.author_q }}{% if data.author_q.is_staff %} (a) {% endif %}</a></td>
+								<td><k class='btn btn-info'>{{ data.tag1_q }}</k> <k class='btn btn-info'> {{ data.tag2_q }}</k></td>
+								
+							</tr>
+						</tbody>
+					{% endfor %}
+				</table>
+	</div>
+</div>
+{% endblock content %}

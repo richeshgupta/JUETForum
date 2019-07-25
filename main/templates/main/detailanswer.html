@@ -1,0 +1,143 @@
+{% extends 'main/nav.html' %}
+{% load static %}
+{% block title %}
+	<title>Deatailed Answer!</title>
+	<style>
+		div.nav-container
+		{
+			margin-top:5px;
+			width:100%;
+			height:80px;
+			background-color:black;
+			border-radius:20px;
+		}
+		div.nav-btn
+		{
+			margin-left:100px;
+			background-color:white;
+			border-radius:20px;
+			width:100px;
+			height:20px;
+			margin-top:10px;
+			text-align: center;
+		}
+		a#link
+		{
+			width:100px;
+			height:50px;
+			display: inline-block;
+			border-radius:20px;
+			color:white;
+			text-decoration: none;
+			text-align: center;
+			margin-top:15px;
+			margin-left:50px;
+		}
+		a#link:hover
+		{
+			background-color: #90edcc;
+			color:black;
+		}
+		a#link:active
+		{
+			background-color: #90edcc;
+			color:black;
+		}
+		div.content
+		{
+			width:90%;
+			color:white;
+			font-weight: bold;
+			background-color: #071e22;
+			border-radius:20px;
+			padding:30px;
+			margin-top:100px;
+		}
+		pre
+		{
+			color:white;
+			font-size: 1.5em;
+			padding:60px;
+		}
+		a{
+			text-decoration: none;
+			color:white;
+		}
+		a:hover
+		{
+			text-decoration: underline;
+		}
+		h3
+		{
+			color:white;
+			margin-left:1350px;
+		}
+		h3#normal,h4
+		{
+			color:white;
+			margin-left:60px;
+		}
+		hr
+		{
+			width:20%;
+			margin-left:20px;
+			color:white;
+		}
+		a#link-content
+		{
+			font-weight: bold;
+			margin-left:60px;
+		}
+		div.op
+		{
+			width:250px;
+			float:right;
+			color:#1b9977;
+
+		}
+	</style>
+{% endblock title %}
+{% block content %}
+	{% if not kquery %}
+		<div class='card'>
+			<div class='card-body'>
+				<div class="content">
+					<h2 class='text text-info'>Be the first one to answer!</h2>
+				</div>
+			</div>
+		</div>
+	{% else %}
+		{% for s in kquery %}
+			<div class='container-fluid'>
+				<div class="content">
+					<h1 class='btn btn-success pl-4 pr-4 display-2'><a href='{% url "ans_show" s.id %}' class='text text-light'>{{ s.title_a }}</a></h1><br />
+				{% if s.author_a == user %}
+						<div class="op">
+							<div class='btn-group'>
+							<a href="{% url 'update-ans' s.id %}" class='btn btn-outline-info'>Update Answer</a><br />
+							<a href="{% url 'delete-ans' s.id %}" class='btn btn-outline-danger'>Delete Answer</a>
+						</div>
+						</div>
+					{% endif %}
+					<h6 class='text text-danger'>{{ s.date_a }}</h6>
+				<pre class='text text-light'>{{ s.notice_a }}</pre>
+				<br /><br />
+				{% if s.url_a %}
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Url - <a id="link-content" href="{{ s.url_a }}" target="_blank">{{ s.url_a }}</a><br /><br /><br /><br />
+				{% endif %}
+				<br />
+				<h5 class='text text-info float-left'> Written by - {{ s.author_a }}{% if s.author_a.is_staff %} (a) {% endif %}</h5>
+				<hr>
+				<a class='btn btn-dark float-right'>Upvotes - {{s.upvotes}}</a><br /><br />
+				<div class='btn-group float-right'>
+				<a href='{% url "upvote" s.id %}' class='btn btn-success'>Upvote</a>
+
+				<a href='{% url "downvote" s.id %}' class='btn btn-danger'>Downvote</a>
+				<a href='{% url "report-a" s.id %}' class='btn btn-warning'>Report</a>
+				</div>
+				<br /><br /><br />
+				
+		</div>
+		{% endfor %}
+	{% endif %}
+{% endblock content %}

@@ -1,0 +1,38 @@
+{% extends 'main/nav.html' %}
+{% load static %}
+{% block title %}
+<title>Please Donate</title>
+{% endblock title %}
+{% block content %}
+<div class='jumbotron jumbotron-fluid bg-dark text-center text-light'>
+	{% if user.is_authenticated %}
+		<h1 class='text-success'>Hi {{request.user}}!, please sponsor our hosting costs</h1>
+	{% else %}
+	<h1 class="text-success">Hi user, please sponsor our hosting costs</h1>
+	{% endif %}
+</div>
+
+<div class='col-md-3 float-left'>
+	<div class='card'>
+		<div class="card-body text-center"><h3>YouTube tutorial</h3></div>
+		<div class="card-footer"><iframe width="420" height="315" src="https://www.youtube.com/embed/ossjXVPnxgE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+	</div>
+</div>
+	<div class='col-md-5 mx-auto'>
+	<div class='card '>
+		<div class='card-body'>
+			<h2>Please Donate to help us continue this Not-For-Profit initiative.</h2>
+		</div>
+		<div class='card-footer mx-auto'>
+
+			<h3 class='text-muted'>
+				Scan on your PayTM to Donate us. Every penny counts.
+			</h3>
+			<center>
+			<img src='{% static "qr.png" %}' class='border border-success p-3 m-4'/></center>
+			<h3>Also write your name on message to let us know that you are our hero</h3>
+		</div>
+		</div>
+		</div>
+	</div>
+{% endblock content %}
