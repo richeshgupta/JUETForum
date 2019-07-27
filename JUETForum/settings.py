@@ -25,7 +25,7 @@ SECRET_KEY = 'w!*hr34i-sx+d*zj1u!+y+gx_&wf_x9$ki5t&23v45mw)5-^re'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -76,8 +76,11 @@ WSGI_APPLICATION = 'JUETForum.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME':'askjuet$default',
+	'HOST':'askjuet.mysql.pythonanywhere-services.com',
+	'USER':'askjuet',
+	'PASSWORD':'98191841a',
     }
 }
 
