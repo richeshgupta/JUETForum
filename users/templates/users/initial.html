@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>JUET NoticeBoard 1.0</title>
+	<title>AskJUET 1.0</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1, shrink-to-fit=no">
 	<meta name="keywords" content="webkiosk,JUET,Jaypee university of engineering and technology,student project,indian,college">
@@ -24,7 +24,7 @@
 		background:url('{% static 'back.png' %}');
 		border-radius:20px;
 		background-size: 100%;
-		height:40em;
+		height:45em;
 		width:90%;
 		margin:auto;
 		margin-top: 50px;
@@ -127,14 +127,12 @@
 	<div class="container-custom">
 		<div class="main">
 			<div class="container">
-				<div class="no-extra">JUET</div><div class="head"> NoticeBoard</div>
+				<div class="no-extra">Ask</div><div class="head"> JUET</div>
 					
 					<div class="header">
-							<h2>Choose appropriately</h2>
+							<h2>By choosing i accept, you acknowledge that this website can store the data about your activites on this website</h2>
 	
-								<div class="btn"><a href="{% url 'home' %}">Student</a></div>
-								<div class="btn"><a href="{% url 'login' %}">Faculty</a></div>
-								<div class="btn"><a href="{% url 'forum-home' %}">Forum</a></div>
+									<div class="btn"><a href="{% url 'forum-home' %}">Accept</a></div>
 					</div>	
 					
 				</div>
