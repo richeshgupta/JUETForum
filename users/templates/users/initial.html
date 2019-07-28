@@ -2,11 +2,18 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script>
+// device detection
+function isMobile() { return ('ontouchstart' in document.documentElement); }
+if(isMobile()) { 
+	alert('Switch to landscape mode');
+}
+</script>
 	<title>AskJUET 1.0</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1, shrink-to-fit=no">
-	<meta name="keywords" content="webkiosk,JUET,Jaypee university of engineering and technology,student project,indian,college">
-	<meta name="description" content="This Websites is an open source project for webkiosk for the college - Jaypee university of engineering and technology, Guna.">
+	<meta name="keywords" content="Forum,Askjuet,JUET,Jaypee university of engineering and technology,student project,indian,college">
+	<meta name="description" content="This Websites is an open source project for Forum for the college - Jaypee university of engineering and technology, Guna. to enable students to ask any question they need answers of and also this project will help students to work on production level.">
 	<link rel="shortcut icon" type="image/png" href="{% static 'favicon.png' %}">
 	<style>
 
@@ -123,7 +130,6 @@
 </style>
 </head>
 <body>
-	
 	<div class="container-custom">
 		<div class="main">
 			<div class="container">

@@ -74,16 +74,21 @@ WSGI_APPLICATION = 'JUETForum.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME':'askjuet$default',
+# 	'HOST':'askjuet.mysql.pythonanywhere-services.com',
+# 	'USER':'askjuet',
+# 	'PASSWORD':'98191841a',
+#     }
+# }
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME':'askjuet$default',
-	'HOST':'askjuet.mysql.pythonanywhere-services.com',
-	'USER':'askjuet',
-	'PASSWORD':'98191841a',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
