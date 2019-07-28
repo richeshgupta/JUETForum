@@ -2,6 +2,16 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-144724824-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-144724824-1');
+</script>
+
 	{% block title %}
 	{% endblock title %}
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -172,13 +182,13 @@
 		<div class="collapse navbar-collapse" id="collapse_target">	
 			
 			<ul class="nav justify-content-end">
-				<li class="navbar-item active"><a href="{% url 'home' %}" class="nav-link"><h3><font color="#DC143C"><B>Home</B></font></h3></a></li>
-				<li class="navbar-item active"><a href="{% url 'notice' %}" class="nav-link"><h3><font color="#DC143C"><B>Notice</B></font></h3></a></li>
-				<li class="navbar-item active"><a href="{% url 'forum-home' %}" class="nav-link"><h3><font color="#DC143C"><B>Forum</B></font></h3></a></li>
+				<li class="navbar-item active m-1"><a href="{% url 'home' %}" class="nav-link"><h3><font color="#DC143C"><B>Home</B></font></h3></a></li>
+				<li class="navbar-item active m-1"><a href="{% url 'notice' %}" class="nav-link"><h3><font color="#DC143C"><B>Notice</B></font></h3></a></li>
+				<li class="navbar-item active m-1"><a href="{% url 'forum-home' %}" class="nav-link"><h3><font color="#DC143C"><B>Forum</B></font></h3></a></li>
 				{% if user.is_authenticated %}
-					<li class="navbar-item active"><a href="{% url 'logout' %}" class="nav-link"><h3><font color="#DC143C"><B>Logout</B></font></h3></a></li>
+					<li class="navbar-item active m-1"><a href="{% url 'logout' %}" class="nav-link"><h3><font color="#DC143C"><B>Logout</B></font></h3></a></li>
 				{% else %}
-					<li class="navbar-item active"><a href="{% url 'login' %}" class="nav-link"><h3><font color="#DC143C"><B>Login</B></font></h3></a></li>
+					<li class="navbar-item active m-1"><a href="{% url 'login' %}" class="nav-link m-1"><h3><font color="#DC143C"><B>Login</B></font></h3></a></li>
 				{% endif %}
 			</ul>
 			<ul class="nav justify-content-end ml-auto">
