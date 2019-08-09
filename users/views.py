@@ -4,29 +4,6 @@ from django.views.generic import ListView,DetailView,CreateView,UpdateView,Delet
 from django.core.mail import send_mail
 from django.contrib.auth import login
 from django.contrib import messages
-# from .forms import kk
-def not_logged_in(request):
-	return render(request,'users/not_logged_in.html',{})
-
-def menu(request):
-	return render(request,'users/initial.html',{})
-	
-def about(request):
-	return render(request,'users/about.html',{})
-
-
-# def signup_view(request):
-# 	if request.method == 'POST':
-# 		form = kk(request.POST)
-# 		if form.is_valid():
-# 			username = form.cleaned_data.get('username')
-# 			form.save()
-# 			messages.success(request, f'Account Created for {username}!')
-# 			return redirect('login')
-# 	else:
-# 		form = kk()
-# 	return render(request,'users/signup.html',{'form':form})
-
 from django.contrib.auth import  authenticate
 from .forms import kk as SignupForm
 from django.contrib.sites.shortcuts import get_current_site
@@ -36,6 +13,16 @@ from django.template.loader import render_to_string
 from .tokens import account_activation_token
 from django.contrib.auth.models import User
 from django.core.mail import EmailMessage
+
+# from .forms import kk
+def not_logged_in(request):
+	return render(request,'users/not_logged_in.html',{})
+
+def menu(request):
+	return render(request,'users/initial.html',{})
+	
+def about(request):
+	return render(request,'users/about.html',{})
 
 def signup(request):
     if request.method == 'POST':
@@ -57,7 +44,7 @@ def signup(request):
                         mail_subject, message, to=[to_email]
             )
             email.send()
-            return HttpResponse('Please confirm your email address to complete the registration')
+            return render(request,'users/success-confirm.html',{})
     else:
         form = SignupForm()
     return render(request,'users/signup.html', {'form': form})
@@ -73,6 +60,6 @@ def activate(request, uidb64, token):
        user.save()
        login(request, user)
         # return redirect('home')
-       return HttpResponse('Thank you for your email confirmation. Now you can login your account.')
+       return render(request,"users/success.html",{})
     else:
-       return HttpResponse('Activation link is invalid!')
+       return render(request,"users/invalid-link.html",{})
