@@ -63,3 +63,6 @@ def activate(request, uidb64, token):
        return render(request,"users/success.html",{})
     else:
        return render(request,"users/invalid-link.html",{})
+
+def privacy(request):
+  return render(request,"users/privacy.html",{})

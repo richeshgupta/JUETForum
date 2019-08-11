@@ -40,6 +40,9 @@
       		<a class="btn btn-success mx-2" href='{% url "signup" %}'>Signup</a>
       	</li>
       {% endif %}
+      <li class='nav-item float-right'>
+        <a class='btn btn-warning mx-2 ' href='{% static "AskJUET.apk" %}'>Android App</a>
+      </li>
     </ul>
     {% if user.is_authenticated %}
     <h5 class='text text-dark mr-3'>
@@ -61,6 +64,7 @@
       <center><div class='container contaner-fluid m-3'>
         <a class='btn btn-light p-2' href='{% url "faqs" %}'>FAQs</a>
         <a class='btn btn-light p-2' href='{% url "guidelines" %}'>Community Guidelines</a>
+        <a class='btn btn-light p-2' href='{% url "privacy" %}'>Privacy Policy</a>
       </div></center>
       <hr style='border-color:white;width:50%;margin-top:25px;margin-bottom:25px;'>
 			<div class='container'>
