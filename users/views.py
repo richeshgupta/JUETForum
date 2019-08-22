@@ -13,6 +13,9 @@ from django.template.loader import render_to_string
 from .tokens import account_activation_token
 from django.contrib.auth.models import User
 from django.core.mail import EmailMessage
+from django.contrib.auth.views import PasswordChangeDoneView,PasswordChangeView
+from django.contrib.auth.mixins import LoginRequiredMixin,UserPassesTestMixin
+
 
 # from .forms import kk
 def not_logged_in(request):
@@ -66,3 +69,8 @@ def activate(request, uidb64, token):
 
 def privacy(request):
   return render(request,"users/privacy.html",{})
+
+class change_pass(PasswordChangeView,LoginRequiredMixin):
+  template_name = "users/change_pass.html"
+class change_pass_done(PasswordChangeDoneView,LoginRequiredMixin):
+  template_name="users/change_pass_done.html"
