@@ -108,12 +108,19 @@ def upvotes(request,pk):
 		return render(request,"main/upvoted.html",{})
 	else:
 		return render(request,"main/already-upvoted.html",{})
+
 @login_required
 def downvotes(request,pk):
 	query = answer.objects.get(id = pk)
-	query.upvotes-=1;
-	query.save();
-	return render(request,"main/downvoted.html",{})
+	k = query.downvoted_by.all()
+	k2 = query.upvoted_by.all()
+	if request.user not in k2:
+		query.upvotes-=1;
+		query.save();
+		return render(request,"main/downvoted.html",{})
+	else:
+		return render(request,"main/already-downvoted.html",{})
+
 
 @login_required
 def reportq(request,pk):

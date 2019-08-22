@@ -30,6 +30,7 @@ class answer(models.Model):
 	url_a = models.URLField(max_length=100,blank = True,verbose_name='URL reference')
 	ques = models.ForeignKey(question,on_delete=models.CASCADE,verbose_name='Select Question')
 	upvotes = models.IntegerField(default = 0)
+	downvoted_by = models.ManyToManyField(User,related_name='downvoters')
 	upvoted_by = models.ManyToManyField(User,related_name='upvoters')
 	views = models.PositiveIntegerField(default=0)
 	def __str__(self):
