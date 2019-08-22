@@ -14,44 +14,48 @@
   </body>
 
   	<!-- NAVBAR -->
-  	<nav class="navbar position-fixed-top navbar-light navbar-expand-lg">
+  	<nav class="navbar navbar-light navbar-expand-lg">
   <a class="navbar-brand" href="{% url 'menu' %}"><img src='{% static "logo.png" %}' class='d-inline-block align-top' width='170px'></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-
+<div class='border border-dark rounded'>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="btn btn-info mx-2" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link btn-light" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class='nav-item'>
-      	<a class='btn btn-info mx-2' href='{% url "write" %}'>Ask</a>
+      	<a class='nav-link btn-light' href='{% url "write" %}'>Ask</a>
       </li>
       {% if user.is_authenticated %}
       	<li class='nav-item'>
-      		<a class='btn btn-danger mx-2' href='{% url "logout" %}'>Logout</a>
+      		<a class='nav-link btn-light' href='{% url "logout" %}'>Logout</a>
       	</li>
       {% else %}
       	<li class='nav-item'>
-      		<a class='btn btn-success mx-2' href='{% url "login" %}'>Login</a>
+      		<a class='nav-link btn-light' href='{% url "login" %}'>Login</a>
       	</li>
       	<li class='nav-item'>
-      		<a class="btn btn-success mx-2" href='{% url "signup" %}'>Signup</a>
+      		<a class="nav-link btn-light" href='{% url "signup" %}'>Signup</a>
       	</li>
       {% endif %}
       <li class='nav-item float-right'>
-        <a class='btn btn-warning mx-2 ' href='{% static "AskJUET.apk" %}'>Android App</a>
+        <a class='nav-link btn-light' href='{% static "AskJUET.apk" %}'>Android App</a>
       </li>
     </ul>
-    {% if user.is_authenticated %}
-    <h5 class='text text-dark mr-3'>
-      Hello, <a class='btn btn-warning' href='{% url "profile" request.user.id %}'>{{ request.user }}{% if request.user.is_staff %} (a) {% endif %}</a>
-    </h5>
-    {% endif %}
+    
   </div>
+</div>
+<div class='col-md-2 float-right'>
+  {% if user.is_authenticated %}
+    <h5 class='text text-dark mr-3 float-right'>
+      <a class='nav-link btn-success' href='{% url "profile" request.user.id %}'>{{ request.user }}{% if request.user.is_staff %} (a) {% endif %}</a>
+    </h5>
+  {% endif %}
+</div>
 </nav><!-- nav bar finished -->
-   
+
   <hr>
   {% block side-nav %}
   {% endblock side-nav %}

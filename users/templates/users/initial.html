@@ -138,7 +138,14 @@ if(isMobile()) {
 			margin:auto;
 			width:300px;
 		}
-		
+		a.lnk-n
+		{
+			color:white;
+		}
+		a.lnk-n:hover
+		{
+			text-orientation: upright;
+		}
 </style>
 </head>
 <body>
@@ -148,8 +155,9 @@ if(isMobile()) {
 				<div class="no-extra">Ask</div><div class="head"> JUET</div>
 					
 					<div class="header">
-							<h2>By using this website you have to abide T&C and community guidelines.</h2>
-	
+							<h2>By using this website you have to abide <a href='{% url "privacy" %}' class='lnk-n'>Privacy Policy</a> and <a href='{% url "guidelines" %}' class='lnk-n'>community guidelines.</a></h2>
+							
+							
 									<div class="btn"><a href="{% url 'forum-home' %}">Proceed</a></div>
 					</div>	
 					

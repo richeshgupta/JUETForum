@@ -71,7 +71,7 @@ class AnswerDelete(LoginRequiredMixin,UserPassesTestMixin,DeleteView):
 
 class QuestionUpdate(LoginRequiredMixin,UserPassesTestMixin,UpdateView):
 	model = question
-	fields= ['title_q','notice_q','ques','date_q','url_q','tag1_q','tag2_q',]
+	fields= ['title_q','notice_q','date_q','url_q','tag1_q','tag2_q',]
 	context_object_name = 'form'
 	def form_valid(self,questionForm):
 		questionForm.instance.author_q = self.request.user
@@ -100,9 +100,14 @@ class AnswerUpdate(LoginRequiredMixin,UserPassesTestMixin,UpdateView):
 @login_required
 def upvotes(request,pk):
 	query = answer.objects.get(id = pk)
-	query.upvotes+=1;
-	query.save();
-	return render(request,"main/upvoted.html",{})
+	k = query.upvoted_by.all()
+	if request.user not in k:
+		query.upvotes+=1;
+		query.save();
+		query.upvoted_by.add(request.user)
+		return render(request,"main/upvoted.html",{})
+	else:
+		return render(request,"main/already-upvoted.html",{})
 @login_required
 def downvotes(request,pk):
 	query = answer.objects.get(id = pk)
