@@ -28,11 +28,8 @@
       <li class='nav-item'>
       	<a class='nav-link btn-light' href='{% url "write" %}'>Ask</a>
       </li>
-      {% if user.is_authenticated %}
-      	<li class='nav-item'>
-      		<a class='nav-link btn-light' href='{% url "logout" %}'>Logout</a>
-      	</li>
-      {% else %}
+      {% if not user.is_authenticated %}
+      	
       	<li class='nav-item'>
       		<a class='nav-link btn-light' href='{% url "login" %}'>Login</a>
       	</li>

@@ -12,6 +12,10 @@ class index_forum(ListView):
 	template_name = 'main/index.html'
 	context_object_name = 'datas'
 	ordering = ['-date_q']
+	def count(request,pk):
+		k = answer.objects.get(ques=pk).count
+		return k 
+
 
 class forum_detail(DetailView):
 	model = question

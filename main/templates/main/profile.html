@@ -5,7 +5,10 @@
 {% endblock title %}
 {% block content %}
 	<div class='jumbotron bg-dark text-white'>
-		<h3 class='text float-left'><a href='{% url "password_change" %}' class="btn btn-outline-warning">Change Password</a></h3>
+			<div class='btn-group-vertical float-left' role="group">
+				<a href='{% url "password_change" %}' class="btn btn-outline-warning">Change Password</a>
+				<a href='{% url "logout" %}' class="btn btn-outline-danger">Logout</a>
+			</div>
 		<h2 class='text text-info text-center'>@{{ author }}</h2>
 		<h5 class="text text-success float-right">Last login: {{author.last_login}}</h5>
 	</div>

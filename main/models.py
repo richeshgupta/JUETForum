@@ -6,7 +6,7 @@ from django.urls import reverse
 # Create your models here.
 class question(models.Model):
 	author_q = models.ForeignKey(User, on_delete=models.CASCADE,)
-	title_q = models.CharField(max_length=150,verbose_name='Title of Question')
+	title_q = models.CharField(max_length=50,verbose_name='Title of Question')
 	notice_q = models.TextField(max_length=1000,default='',verbose_name="Description of Question")
 	date_q = models.DateTimeField(default = timezone.now,verbose_name="Date/Time")
 	url_q = models.URLField(max_length=100,blank = True,verbose_name="URL reference")
@@ -23,7 +23,7 @@ class question(models.Model):
 		return self.author_q
 
 class answer(models.Model):
-	title_a = models.CharField(max_length=150,verbose_name='Title of Answer')
+	title_a = models.CharField(max_length=50,verbose_name='Title of Answer')
 	author_a = models.ForeignKey(User, on_delete=models.CASCADE,)
 	notice_a = models.TextField(max_length=2200,default="",verbose_name='Describe Answer')
 	date_a = models.DateTimeField(default = timezone.now,verbose_name='Date/Time')
