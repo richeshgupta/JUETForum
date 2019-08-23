@@ -169,3 +169,6 @@ def faqs(request):
 
 def guidelines(request):
 	return render(request,"main/guidelines.html",{})
+
+def donors(request):
+	return render(request,"main/donors.html",{})

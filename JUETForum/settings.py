@@ -140,4 +140,3 @@ EMAIL_HOST_USER     = 'pantomath.notice@gmail.com'
 EMAIL_HOST_PASSWORD = 'pantomathkj123@'
 EMAIL_USE_TLS       = True
 EMAIL_USE_SSL       = False
-AUTH_USER_EMAIL_UNIQUE = True
