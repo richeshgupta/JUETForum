@@ -14,6 +14,12 @@
   </body>
 
   	<!-- NAVBAR -->
+
+<div class='float-right mt-5 mr-3'>
+  {% if user.is_authenticated %}
+      <a class='nav-link btn btn-success' href='{% url "profile" request.user.id %}'>{{ request.user }}{% if request.user.is_staff %} (a) {% endif %}</a>
+  {% endif %}
+</div>
   	<nav class="navbar navbar-light navbar-expand-lg">
   <a class="navbar-brand" href="{% url 'menu' %}"><img src='{% static "logo.png" %}' class='d-inline-block align-top' width='170px'></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -28,8 +34,7 @@
       <li class='nav-item'>
       	<a class='nav-link btn-light' href='{% url "write" %}'>Ask</a>
       </li>
-      {% if not user.is_authenticated %}
-      	
+      {% if not user.is_authenticated %}	
       	<li class='nav-item'>
       		<a class='nav-link btn-light' href='{% url "login" %}'>Login</a>
       	</li>
@@ -44,14 +49,9 @@
     
   </div>
 </div>
-<div class='col-md-2 float-right'>
-  {% if user.is_authenticated %}
-    <h5 class='text text-dark mr-3 float-right'>
-      <a class='nav-link btn-success' href='{% url "profile" request.user.id %}'>{{ request.user }}{% if request.user.is_staff %} (a) {% endif %}</a>
-    </h5>
-  {% endif %}
-</div>
-</nav><!-- nav bar finished -->
+
+</nav>
+<!-- nav bar finished -->
 
   <hr>
   {% block side-nav %}

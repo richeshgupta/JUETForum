@@ -35,7 +35,7 @@ def signup(request):
             user.is_active = False
             user.save()
             current_site = get_current_site(request)
-            mail_subject = 'Activate your Forum account.'
+            mail_subject = 'AskJUET - Verify'
             message = render_to_string('users/acc_active_email.html', {
                 'user': user,
                 'domain': current_site.domain,
