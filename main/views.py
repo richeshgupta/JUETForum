@@ -101,10 +101,15 @@ class AnswerUpdate(LoginRequiredMixin,UserPassesTestMixin,UpdateView):
 def upvotes(request,pk):
 	query = answer.objects.get(id = pk)
 	k = query.upvoted_by.all()
+	k2 = query.downvoted_by.all()
 	if request.user not in k:
 		query.upvotes+=1;
 		query.save();
-		query.upvoted_by.add(request.user)
+		if request.user not in k2:
+			query.upvoted_by.add(request.user)
+			
+		else:
+			query.downvoted_by.remove(request.user)
 		return render(request,"main/upvoted.html",{})
 	else:
 		return render(request,"main/already-upvoted.html",{})
@@ -114,9 +119,13 @@ def downvotes(request,pk):
 	query = answer.objects.get(id = pk)
 	k = query.downvoted_by.all()
 	k2 = query.upvoted_by.all()
-	if request.user not in k2:
+	if request.user not in k:
 		query.upvotes-=1;
 		query.save();
+		if request.user not in k2:
+			query.downvoted_by.add(request.user)
+		else:
+			query.upvoted_by.remove(request.user)
 		return render(request,"main/downvoted.html",{})
 	else:
 		return render(request,"main/already-downvoted.html",{})
