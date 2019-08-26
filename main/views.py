@@ -1,10 +1,10 @@
 from django.shortcuts import render,redirect
 from .models import question,answer
-from .forms import questionForm,answerForm
+from .forms import questionForm,answerForm,msgs_form
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins	import LoginRequiredMixin,UserPassesTestMixin
 from django.views.generic import ListView,DetailView,CreateView,UpdateView,DeleteView
-from .models import reportques,reportans
+from .models import reportques,reportans,msgs
 from django.contrib.auth.models import User
 
 class index_forum(ListView): 
@@ -32,7 +32,7 @@ class answer_independent(DetailView):
 
 class PostCreate(LoginRequiredMixin,CreateView):
 	model = question
-	fields= ['title_q','notice_q','date_q','url_q','tag1_q','tag2_q',]
+	fields= ['title_q','notice_q','url_q','tag1_q','tag2_q',]
 	context_object_name = 'form'
 	template_name = 'main/forum_write.html'
 	def form_valid(self,questionForm):
@@ -41,7 +41,7 @@ class PostCreate(LoginRequiredMixin,CreateView):
 	
 class ansCreate(LoginRequiredMixin,CreateView):
 	model  = answer
-	fields = ['title_a','notice_a','ques','date_a','url_a',]
+	fields = ['title_a','notice_a','ques','url_a',]
 	context_object_name = 'form'
 	template_name = 'main/ans_write.html'
 	def form_valid(self,answerForm):
@@ -172,3 +172,12 @@ def guidelines(request):
 
 def donors(request):
 	return render(request,"main/donors.html",{})
+
+class msgs_view(CreateView,LoginRequiredMixin):
+	model = msgs
+	fields = ["receiver","text"]
+	context_object_name = "form"
+	template_name = "main/send_msg.html"
+	def form_valid(self,msgs_form):
+		msgs_form.instance.sender = self.request.user
+		return super().form_valid(msgs_form)

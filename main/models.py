@@ -46,4 +46,16 @@ class reportques(models.Model):
 class reportans(models.Model):
 	reported_a = models.ForeignKey(answer,on_delete=models.CASCADE)
 
+class Profile(models.Model):
+	user = models.OneToOneField(User, on_delete=models.CASCADE)
+	#image = models.ImageField(default='default.jpg', upload_to='profie/pics')
+
+	def __str__(self):
+		return f'{self.user.username} Profile' 
+
+class msgs(models.Model):
+	sender=models.ForeignKey(User,on_delete=models.CASCADE,related_name="Sender")
+	receiver = models.ForeignKey(User,on_delete=models.CASCADE,related_name="receiver")
+	date = models.DateTimeField(default = timezone.now)
+	text = models.TextField(max_length=100,default=" ",verbose_name='Message')
 
