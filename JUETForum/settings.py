@@ -75,15 +75,15 @@ WSGI_APPLICATION = 'JUETForum.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME':'askjuet$default',
-# 	'HOST':'askjuet.mysql.pythonanywhere-services.com',
-# 	'USER':'askjuet',
-# 	'PASSWORD':'98191841a',
-#     }
-# }
+DATABASES = {
+     'default': {
+         'ENGINE': 'django.db.backends.mysql',
+         'NAME':'richeshgupta$default',
+ 	'HOST':'richeshgupta.mysql.pythonanywhere-services.com',
+ 	'USER':'richeshgupta',
+ 	'PASSWORD':'98191841a',
+     }
+ }
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
