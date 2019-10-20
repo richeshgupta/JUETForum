@@ -15,9 +15,10 @@ from django.contrib.auth.models import User
 from django.core.mail import EmailMessage
 from django.contrib.auth.views import PasswordChangeDoneView,PasswordChangeView
 from django.contrib.auth.mixins import LoginRequiredMixin,UserPassesTestMixin
-
+# from django.contrib.auth
 
 # from .forms import kk
+
 def not_logged_in(request):
 	return render(request,'users/not_logged_in.html',{})
 

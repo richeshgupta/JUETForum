@@ -6,12 +6,12 @@ from .views import upvotes,downvotes,AnswerUpdate,AnswerDelete
 from .views import reportq,reporta,profile,donate,faqs,guidelines,donors
 from .views import answer_independent as ans_in
 from .views import msgs_view
-
+from .views import ans_create
 urlpatterns= [
 	path('', views.index_forum.as_view(),name="forum-home"),
 	path('write/',PostCreate.as_view(template_name='main/forum_write.html'),name='write'),
     path('question/<int:pk>/',forum_detail.as_view(),name="forum_detail"),
-    path('answer/<int:pk>/',ansCreate.as_view(),name="create-ans"),
+    path('answer/<int:pk>/',ans_create,name="create-ans"),
     path('show-answer/<int:pk>/',answer_detail,name="ans-detail"),
     path('del-ques/<int:pk>/',question_delete.as_view(),name='delete-ques'),
     path('update-ques/<int:pk>/',QuestionUpdate.as_view(),name='update-ques'),

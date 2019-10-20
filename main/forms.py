@@ -13,7 +13,7 @@ class answerForm(forms.ModelForm):
 	
 	class Meta: 
 		model = answer
-		fields= ['title_a','ques','notice_a','url_a',]
+		fields= ['title_a','notice_a','url_a',]
 
 class msgs_form(forms.ModelForm):
 	class Meta:

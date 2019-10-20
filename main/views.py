@@ -38,15 +38,32 @@ class PostCreate(LoginRequiredMixin,CreateView):
 	def form_valid(self,questionForm):
 		questionForm.instance.author_q = self.request.user
 		return super().form_valid(questionForm)
-	
+
+from .forms import answerForm
 class ansCreate(LoginRequiredMixin,CreateView):
-	model  = answer
+	model  = answer 
 	fields = ['title_a','notice_a','ques','url_a',]
 	context_object_name = 'form'
 	template_name = 'main/ans_write.html'
 	def form_valid(self,answerForm):
 		answerForm.instance.author_a = self.request.user
 		return super().form_valid(answerForm)
+
+@login_required
+def ans_create(request,pk):
+	if request.method=='POST':
+		form = answerForm(request.POST)
+		if form.is_valid():
+			form.instance.author_a = request.user
+			form.instance.ques = question.objects.get(id = pk)
+			form.save()
+			form = answerForm()
+			return render(request,"main/ans_write.html",{'form':form})
+	else:
+		form = answerForm()
+		return render(request,"main/ans_write.html",{'form':form})
+
+
 
 def answer_detail(request,pk):
 	kquery = answer.objects.filter(ques = pk).order_by('-upvotes')
