@@ -1,7 +1,7 @@
 from django.urls import path
 from . import views
 from django.contrib.auth import views as auth_views
-from .views import PostCreate,forum_detail,ansCreate,answer_detail,question_delete,QuestionUpdate
+from .views import PostCreate,forum_detail,answer_detail,question_delete,QuestionUpdate
 from .views import upvotes,downvotes,AnswerUpdate,AnswerDelete
 from .views import reportq,reporta,profile,donate,faqs,guidelines,donors
 from .views import answer_independent as ans_in
