@@ -40,15 +40,6 @@ class PostCreate(LoginRequiredMixin,CreateView):
 		return super().form_valid(questionForm)
 
 from .forms import answerForm
-# class ansCreate(LoginRequiredMixin,CreateView):
-# 	model  = answer 
-# 	fields = ['title_a','notice_a','ques','url_a',]
-# 	context_object_name = 'form'
-# 	template_name = 'main/ans_write.html'
-# 	def form_valid(self,answerForm):
-# 		answerForm.instance.author_a = self.request.user
-# 		return super().form_valid(answerForm)
-
 @login_required
 def ans_create(request,pk):
 	if request.method=='POST':
@@ -198,3 +189,5 @@ class msgs_view(CreateView,LoginRequiredMixin):
 	def form_valid(self,msgs_form):
 		msgs_form.instance.sender = self.request.user
 		return super().form_valid(msgs_form)
+def forgot(request):
+	return render(request,"main/forgot-pass.html",{})

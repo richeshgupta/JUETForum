@@ -53,7 +53,10 @@
 					{% csrf_token %}
 					{{ form|crispy }}
 					<button type='submit' class='btn btn-outline-success'>Login</button>
-					</form><hr>
+					</form>
+					
+					<a href='{% url "forgot" %}' class="text-muted float-right">Forgot Password?</a><br />
+					<hr>
 					<h6 class='text-muted'>
 						Don't have an account?
 					</h6>

@@ -6,7 +6,7 @@ from .views import upvotes,downvotes,AnswerUpdate,AnswerDelete
 from .views import reportq,reporta,profile,donate,faqs,guidelines,donors
 from .views import answer_independent as ans_in
 from .views import msgs_view
-from .views import ans_create
+from .views import ans_create,forgot
 urlpatterns= [
 	path('', views.index_forum.as_view(),name="forum-home"),
 	path('write/',PostCreate.as_view(template_name='main/forum_write.html'),name='write'),
@@ -28,4 +28,5 @@ urlpatterns= [
     path('ans_show/<int:pk>/',ans_in.as_view(),name='ans_show'),
     path('donors/',donors,name='donors'),
     path('msgs/<int:pk>/',msgs_view.as_view(),name='msgs'),
+    path('forgot-pass/',forgot,name='forgot'),
 ]
