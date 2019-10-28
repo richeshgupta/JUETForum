@@ -10,3 +10,9 @@ class kk(UserCreationForm):
 	class Meta:
 		model = User
 		fields = ['first_name','last_name','username','Year','email','password1','password2']
+	# User.__meta.get_field_by_name('email').unique = True
+	def valid_email(self):
+		email  = self.cleaned_data['email']
+		if User.objects.filter(email=email).exists():
+			raise ValidationError("Email Already exists!")
+		return email

@@ -1,0 +1,17 @@
+{% extends 'main/nav.html' %}
+{% block title %}
+<title>This email already exists in our database.</title>
+{% endblock title %}
+{% block content %}
+<div class="container border border-2 p-4">
+	<h1 class="display-4 text text-info">
+		This Email already exists in our database.
+	</h1>
+	<h3 class='text text-danger'>
+		This email is already in use
+	</h3>
+	<br />
+	<hr />
+	<a href='{% url "login" %}' class='btn btn-outline-success'>Try Logging in</a>
+</div>
+{% endblock content %}

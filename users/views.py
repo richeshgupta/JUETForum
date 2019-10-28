@@ -32,6 +32,8 @@ def signup(request):
     if request.method == 'POST':
         form = SignupForm(request.POST)
         if form.is_valid():
+          try:
+            form.valid_email()
             user = form.save(commit=False)
             user.is_active = False
             user.save()
@@ -49,6 +51,8 @@ def signup(request):
             )
             email.send()
             return render(request,'users/success-confirm.html',{})
+          except:
+            return render(request,"users/already-exist.html",{})
     else:
         form = SignupForm()
     return render(request,'users/signup.html', {'form': form})
