@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
-from .models import question,answer,msgs
+from .models import question,answer,msgs,Profile
 #from django.utils.translation import ugettext_lazy as _
 class questionForm(forms.ModelForm):
 	
@@ -19,3 +19,7 @@ class msgs_form(forms.ModelForm):
 	class Meta:
 		model = msgs
 		fields = ['receiver','text']
+class ProfileForm(forms.ModelForm):
+	class Meta:
+		model = Profile
+		fields = ['date_of_birth']

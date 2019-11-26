@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'users','crispy_forms','main',
+    'users','crispy_forms','main','pwa',
 ]
 
 MIDDLEWARE = [
@@ -140,3 +140,30 @@ EMAIL_HOST_USER     = 'pantomath.notice@gmail.com'
 EMAIL_HOST_PASSWORD = 'pantomathkj123@'
 EMAIL_USE_TLS       = True
 EMAIL_USE_SSL       = False
+STATICFILES_DIRS = [
+    os.path.join(STATIC_ROOT, 'staticfiles'),
+]
+
+# PWA SETTINGS
+PWA_APP_NAME = 'AskJUET'
+PWA_APP_DESCRIPTION = "It's an custom Forum app to ask any question you want."
+PWA_APP_THEME_COLOR = '#0A0302'
+PWA_APP_BACKGROUND_COLOR = '#ffffff'
+PWA_APP_DISPLAY = 'standalone'
+PWA_APP_SCOPE = '/'
+PWA_APP_ORIENTATION = 'any'
+PWA_APP_START_URL = '/'
+PWA_APP_ICONS = [
+    {
+        'src': '/staticfiles/static/favicon.png',
+        'sizes': '160x160'
+    }
+]
+PWA_APP_SPLASH_SCREEN = [
+    {
+        'src': '/staticfiles/static/favicon.png',
+        'media': '(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)'
+    }
+]
+PWA_APP_DIR = 'ltr'
+PWA_APP_LANG = 'en-US'

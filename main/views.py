@@ -16,18 +16,18 @@ class index_forum(ListView):
 		k = answer.objects.get(ques=pk).count
 		return k 
 
-
 class forum_detail(DetailView):
 	model = question
 	template_name= 'main/detailpost.html'
 	ordering = ['-date_q']
 
+
 class answer_independent(DetailView):
 	model = answer
 	template_name = 'main/ans.html'
 	def get_context_object(self,**kwargs):
-		self.answer.views+=1;
-		self.answer.save()
+		self.views+=1;
+		self.save()
 		return super().get_context_object(**kwargs)
 
 class PostCreate(LoginRequiredMixin,CreateView):
@@ -168,7 +168,6 @@ def profile(request,pk):
 	author = User.objects.get(id = pk)
 	context= {'qquery':qquery,'author':author}
 	return render(request,"main/profile.html",context)
-
 def donate(request):
 	return render(request,"main/donate.html",{})
 

@@ -48,10 +48,10 @@ class reportans(models.Model):
 
 class Profile(models.Model):
 	user = models.OneToOneField(User, on_delete=models.CASCADE)
-	#image = models.ImageField(default='default.jpg', upload_to='profie/pics')
-
-	def __str__(self):
-		return f'{self.user.username} Profile' 
+	date_of_birth = models.DateField()
+	followers = models.ForeignKey(User,on_delete=models.CASCADE,related_name='followers')
+	following = models.ForeignKey(User,on_delete=models.CASCADE,related_name='following')
+	# Year = Models.ChoiceField(choices = YEAR)
 
 class msgs(models.Model):
 	sender=models.ForeignKey(User,on_delete=models.CASCADE,related_name="Sender")
