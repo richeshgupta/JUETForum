@@ -21,6 +21,7 @@ urlpatterns = [
     path('privacy/',privacy,name='privacy'),
     path('change-pass/',change_pass.as_view(),name='password_change'),
     path('change-pass-done/',change_pass_done.as_view(),name='password_change_done'),
+    path('',include('pwa.urls')),
     re_path(r'^activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',activate, name='activate'),
     
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

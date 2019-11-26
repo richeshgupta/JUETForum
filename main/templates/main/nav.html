@@ -1,7 +1,9 @@
 {% load static %}
+{% load pwa %}
 <!DOCTYPE html>
 <html> 
 <head>
+  {% progressive_web_app_meta %}
 	{% block title %}
 	{% endblock title %}
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
